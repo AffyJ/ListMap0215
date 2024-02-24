@@ -38,10 +38,15 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Please Enter artist's name:");
         String artistName = scanner.nextLine();
-        if (profileMap.get(artistName) != null) {
-            System.out.println("This artist won " + profileMap.get(artistName));
-        } else {
-            System.out.println("Sorry. No information found.");
+
+        try {
+            if (profileMap.containsKey(artistName)) {
+                System.out.println(profileMap.get(artistName));
+            } else {
+                throw new UserNotFoundException("No information found.");
+            }
+        } catch (UserNotFoundException e) {
+            System.out.println("No information found. Please enter artist's name again.");
         }
     }
 }
