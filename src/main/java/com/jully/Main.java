@@ -1,20 +1,22 @@
 package com.jully;
 
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 
 public class Main {
     public static void main(String[] args) {
 
         List<String> names = new ArrayList<>();
-        names.add("マイリー・サイラス");
-        names.add("テイラー・スウィフト");
-        names.add("ビリー・アイリッシュ");
-        names.add("ヴィクトリア・モネ");
-        names.add("シザ");
+        names.add("Miley Cyrus");
+        names.add("Taylor Swift");
+        names.add("Billie Eilish");
+        names.add("Victoria Monét");
+        names.add("The Beatles");
 
 
         System.out.println(names.size());
@@ -25,40 +27,26 @@ public class Main {
         System.out.println(names.get(4));
 
 
-
         Map<String, String> profileMap = new HashMap<>();
-        profileMap.put("マイリー・サイラス", "最優秀レコード賞" );
-        profileMap.put("テイラー・スウィフト","最優秀アルバム賞" );
-        profileMap.put("ビリー・アイリッシュ", "最優秀楽曲賞");
-        profileMap.put("ヴィクトリア・モネ","最優秀新人賞" );
-        profileMap.put("シザ","最優秀R&Bソング賞" );
+        profileMap.put("Miley Cyrus", "Record of the Year & Best Pop Solo Performance");
+        profileMap.put("Taylor Swift", "Album of the Year & Best Pop Vocal Album");
+        profileMap.put("Billie Eilish", "Song for the Year");
+        profileMap.put("Victoria Monet", "Best New Artist");
+        profileMap.put("The Beatles", "Best Music Video");
 
 
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Please Enter artist's name:");
+        String artistName = scanner.nextLine();
 
-
-        System.out.println(profileMap.get("マイリー・サイラス"));
-        System.out.println(profileMap.get("テイラー・スウィフト"));
-        System.out.println(profileMap.get("ビリー・アイリッシュ"));
-        System.out.println(profileMap.get("ヴィクトリア・モネ"));
-        System.out.println(profileMap.get("シザ"));
-
-        if(profileMap.containsKey("マイリー・サイラス")){
-            System.out.println("マイリー・サイラスは受賞しています。");
-            System.out.println("マイリー・サイラスは" + profileMap.get("マイリー・サイラス") + "を受賞しました。");
-        }else{
-            System.out.println("この人物の情報は見つかりませんでした。");
+        try {
+            if (profileMap.containsKey(artistName)) {
+                System.out.println(profileMap.get(artistName));
+            } else {
+                throw new UserNotFoundException("No information found.");
+            }
+        } catch (UserNotFoundException e) {
+            System.out.println("No information found. Please enter artist's name again.");
         }
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }
